@@ -23,7 +23,7 @@ app.post('/api/upload', async (req, res) => {
         const fileStr = req.body.data;
         console.log(fileStr) //NOTE: ouput file string data to terminal
         const uploadResponse = await cloudinary.uploader.upload(fileStr, { //NOTE: STOPPING HERE???
-            upload_preset: 'ml_default',
+            upload_preset: '', //NOTE: fill in your upload preset here
         });
         console.log(uploadResponse);
         res.json({ msg: 'yaya' });
