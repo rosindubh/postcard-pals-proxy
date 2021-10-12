@@ -16,7 +16,7 @@ app.get('/api/images', async (req, res) => {
         .max_results(30)
         .execute();
 
-    const publicIds = resources.map((file) => file.public_id);
+    const publicIds = resources.map(file => file.public_id);
     console.log(publicIds)
     res.send(publicIds);
 });
