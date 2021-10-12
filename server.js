@@ -10,7 +10,7 @@ app.use(cors());
 
 app.get('/api/images', async (req, res) => {
     const { resources } = await cloudinary.search
-        .expression('folder:dev_setups')
+        .expression('folder:ml_default')
         .sort_by('public_id', 'desc')
         .max_results(30)
         .execute();
@@ -23,7 +23,7 @@ app.post('/api/upload', async (req, res) => {
         const fileStr = req.body.data;
         console.log(fileStr) //NOTE: ouput file string data to terminal
         const uploadResponse = await cloudinary.uploader.upload(fileStr, { //NOTE: STOPPING HERE???
-            upload_preset: '', //NOTE: fill in your upload preset here
+            upload_preset: 'ml_default', //NOTE: fill in your upload preset here
         });
         console.log(uploadResponse);
         res.json({ msg: 'yaya' });
