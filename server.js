@@ -10,7 +10,7 @@ app.use(cors());
 
 app.get('/api/images', async (req, res) => {
     console.log('api/images here')
-    const { resources } = await cloudinary.search
+    const { resources } = await cloudinary.v2.search
         .expression('folder:ml_default')
         .sort_by('public_id', 'desc')
         .max_results(30)
@@ -39,3 +39,6 @@ const port = process.env.PORT || 3001;
 app.listen(port, () => {
     console.log(`listening on ${port}`);
 });
+
+
+//User.findOneAndUpdate({username: req.body.username}, {$push: {notifications: req.body.publicID}}) (edited) 
