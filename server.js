@@ -17,7 +17,7 @@ app.get('/api/images', async (req, res) => {
         .execute();
 
     const publicIds = resources.map(file => file.public_id);
-    console.log('post public ids')
+    console.log(publicIds)
     res.send(publicIds);
 });
 app.post('/api/upload', async (req, res) => {
