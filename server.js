@@ -10,11 +10,16 @@ app.use(cors());
 
 app.get('/api/images', async (req, res) => {
     console.log('api/images here')
-    const { resources } = await cloudinary.search
-        .expression('folder:ml_default')
-        .sort_by('public_id', 'desc')
-        .max_results(30)
-        .execute();
+    // const { resources } = await cloudinary.search
+    //     .expression('folder:ml_default')
+    //     .sort_by('public_id', 'desc')
+    //     .max_results(30)
+    //     .execute();
+    cloudinary.v2.search
+  .expression('resource_type:image AND tags=kitten AND uploaded_at>1d AND bytes>1m')
+  .sort_by('public_id','desc')
+  .max_results(30)
+  .execute().then(result=>console.log(result));
 
     const publicIds = resources.map(file => file.public_id);
     console.log(publicIds)
