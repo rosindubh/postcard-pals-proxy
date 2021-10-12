@@ -11,7 +11,7 @@ app.use(cors());
 app.get('/api/images', async (req, res) => {
     console.log('api/images here')
     const { resources } = await cloudinary.search
-        .expression('folder:uj4uc283')
+        .expression('samples:ml_default')
         .sort_by('public_id', 'desc')
         .max_results(30)
         .execute();
