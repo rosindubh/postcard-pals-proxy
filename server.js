@@ -10,12 +10,13 @@ app.use(cors());
 
 app.get('/api/images', async (req, res) => {
     const { resources } = await cloudinary.search
-        .expression('folder:ml_default')
+        .expression('folder: ml_default')
         .sort_by('public_id', 'desc')
         .max_results(30)
         .execute();
 
     const publicIds = resources.map((file) => file.public_id);
+    console.log(publicIds)
     res.send(publicIds);
 });
 app.post('/api/upload', async (req, res) => {
