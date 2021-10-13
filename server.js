@@ -19,7 +19,7 @@ app.get('/api/images', async (req, res) => {
 
     const publicIds = resources.map(file => file.public_id);
     console.log(publicIds)
-    res.send(publicIds);
+    res.send("I'ts not working");
 });
 app.post('/api/upload', async (req, res) => {
     try {
