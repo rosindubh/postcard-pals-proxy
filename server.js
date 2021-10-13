@@ -29,7 +29,7 @@ app.post('/api/upload', async (req, res) => {
             upload_preset: 'ml_default', //NOTE: fill in your upload preset here
         });
         console.log(uploadResponse);
-        res.send.json({ uploadResponse});
+        res.json({ uploadResponse});
     } catch (err) {
         console.error(err);
         res.status(500).json({ err: 'Something went wrong' });
