@@ -24,12 +24,12 @@ app.get('/api/images', async (req, res) => {
 app.post('/api/upload', async (req, res) => {
     try {
         const fileStr = req.body.data;
-        console.log(fileStr) //NOTE: ouput file string data to terminal
+        //console.log(fileStr) //NOTE: ouput file string data to terminal
         const uploadResponse = await cloudinary.uploader.upload(fileStr, { //NOTE: STOPPING HERE???
             upload_preset: 'ml_default', //NOTE: fill in your upload preset here
         });
         console.log(uploadResponse);
-        res.json({ msg: uploadResponse});
+        res.json({ uploadResponse});
     } catch (err) {
         console.error(err);
         res.status(500).json({ err: 'Something went wrong' });
